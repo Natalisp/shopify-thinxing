@@ -32,7 +32,7 @@
   </div>
   <div class="col medium-up--one-quarter">
 
-    <div data-price-wrapper>
+    <div data-price-wrapper class="mb2">
       <span data-product-price>
         {{ current_variant.price | money }}
       </span>
@@ -68,30 +68,12 @@
             {%- endif -%}
 
             {% if is_color_option %}
-                  {% for value in option.values %}
-                  <button type="button" name="button" class="  {% if option.selected_value == value %}selected{% endif %}">{{ value }}</button>
-                  {% endfor %}
-
-                {%- else  -%}
-
-                  <div class="{{is_color_option}} selector-wrapper js">
-                    <label for="SingleOptionSelector-{{ forloop.index0 }}">
-                      {{ option.name }}
-                    </label>
-
-                    <select
-                      id="SingleOptionSelector-{{ forloop.index0 }}"
-                      data-single-option-selector
-                      data-index="option{{ option.position }}">
-                      {% for value in option.values %}
-                        <option
-                          value="{{ value | escape }}"
-                          {% if option.selected_value == value %}selected="selected"{% endif %}>
-                            {{ value }}
-                        </option>
-                      {% endfor %}
-                    </select>
-                  </div>
+            <div class="button-group clearfix mb2">
+              <span class="btn">{{ option.name }}</span>
+              {% for value in option.values %}
+              <span class="btn {% if option.selected_value == value %}selected{% endif %}">{{ value }}</span>
+              {% endfor %}
+            </div>
 
             {% endif %}
 
@@ -108,27 +90,63 @@
             </option>
           {% endfor %}
         </select>
-<!--
-        <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
-
-        <input type="number" id="Quantity" name="quantity" value="1" min="1"> -->
 
         <input type="hidden" name="quantity" value="1" min="1" max="15">
 
-        <div class="qty-selectors">
+        <div class="qty-selectors mb2">
 
-            <span class="qty-selectors__btn  qty-selectors__btn--minus">&#150;</span>
+            <span class="btn qty-selectors__btn  qty-selectors__btn--minus">&#150;</span>
 
-            <span>quantity </span><span class="qty-selectors__qty">1</span>
+            <div class="btn">quantity <span class="qty-selectors__qty">1</span></div>
 
-            <span class="qty-selectors__btn  qty-selectors__btn--plus">&#43;</span>
+            <span class="btn qty-selectors__btn  qty-selectors__btn--plus">&#43;</span>
 
         </div>
+
+
+        {% for option in product.options_with_values %}
+
+        {% comment %}
+            Determine if it's a size option.
+        {% endcomment %}
+        {% assign is_size_option = false %}
+        {% assign option_handle = option.name | handle %}
+
+          {%- if option_handle contains "size" -%}
+                {% assign is_size_option = true %}
+          {%- endif -%}
+
+          {% if is_size_option %}
+
+                <div class="selector-wrapper js mb2">
+
+                  <select
+                    id="SingleOptionSelector-{{ forloop.index0 }}"
+                    class="btn"
+                    data-single-option-selector
+                    data-index="option{{ option.position }}">
+                    <option value="" disabled selected="selected">size</option>
+                    {% for value in option.values %}
+                      <option
+                        value="{{ value | escape }}"
+                        >
+                          {{ value }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+
+          {% endif %}
+
+        {% endfor %}
+
 
 
         <button
           type="submit"
           name="add"
+          class="btn btn--primary"
           data-add-to-cart
           {% unless current_variant.available %}disabled="disabled"{% endunless %}>
             <span data-add-to-cart-text>
@@ -148,7 +166,6 @@
 </div>
 
 </div>
-
 
 
 

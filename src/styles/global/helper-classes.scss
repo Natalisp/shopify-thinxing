@@ -1,4 +1,9 @@
 /*================ Helper Classes ================*/
+
+.inline-block{
+  display: inline-block;
+}
+
 .clearfix {
   @include clearfix();
 }
