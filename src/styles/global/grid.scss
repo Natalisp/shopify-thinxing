@@ -1,3 +1,12 @@
+.row{
+  @include clearfix();
+}
+
+.col{
+  float: left;
+}
+
+
 /*============================================================================
   Grid
     - Based on CSS Wizardry grid
