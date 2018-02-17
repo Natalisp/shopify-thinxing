@@ -31,6 +31,22 @@
     {% endif %}
   </div>
   <div class="col medium-up--one-quarter">
+
+    <div data-price-wrapper>
+      <span data-product-price>
+        {{ current_variant.price | money }}
+      </span>
+
+      {% if product.compare_at_price_max > product.price %}
+        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+        <s data-compare-price>
+          {% if current_variant.compare_at_price > current_variant.price %}
+            {{ current_variant.compare_at_price | money }}
+          {% endif %}
+        </s>
+      {% endif %}
+    </div>
+
     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <meta itemprop="priceCurrency" content="{{ shop.currency }}">
       <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
@@ -38,25 +54,47 @@
 
       <form action="/cart/add" method="post" enctype="multipart/form-data">
         {% unless product.has_only_default_variant %}
-          {% for option in product.options_with_values %}
-            <div class="selector-wrapper js">
-              <label for="SingleOptionSelector-{{ forloop.index0 }}">
-                {{ option.name }}
-              </label>
 
-              <select
-                id="SingleOptionSelector-{{ forloop.index0 }}"
-                data-single-option-selector
-                data-index="option{{ option.position }}">
-                {% for value in option.values %}
-                  <option
-                    value="{{ value | escape }}"
-                    {% if option.selected_value == value %}selected="selected"{% endif %}>
-                      {{ value }}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
+          {% for option in product.options_with_values %}
+
+          {% comment %}
+              Determine if it's a color option.
+          {% endcomment %}
+          {% assign is_color_option = false %}
+          {% assign option_handle = option.name | handle %}
+
+            {%- if option_handle contains "color" -%}
+                  {% assign is_color_option = true %}
+            {%- endif -%}
+
+            {% if is_color_option %}
+                  {% for value in option.values %}
+                  <button type="button" name="button" class="  {% if option.selected_value == value %}selected{% endif %}">{{ value }}</button>
+                  {% endfor %}
+
+                {%- else  -%}
+
+                  <div class="{{is_color_option}} selector-wrapper js">
+                    <label for="SingleOptionSelector-{{ forloop.index0 }}">
+                      {{ option.name }}
+                    </label>
+
+                    <select
+                      id="SingleOptionSelector-{{ forloop.index0 }}"
+                      data-single-option-selector
+                      data-index="option{{ option.position }}">
+                      {% for value in option.values %}
+                        <option
+                          value="{{ value | escape }}"
+                          {% if option.selected_value == value %}selected="selected"{% endif %}>
+                            {{ value }}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+            {% endif %}
+
           {% endfor %}
         {% endunless %}
 
@@ -74,20 +112,7 @@
         <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
         <input type="number" id="Quantity" name="quantity" value="1" min="1">
 
-        <div data-price-wrapper>
-          <span data-product-price>
-            {{ current_variant.price | money }}
-          </span>
 
-          {% if product.compare_at_price_max > product.price %}
-            <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-            <s data-compare-price>
-              {% if current_variant.compare_at_price > current_variant.price %}
-                {{ current_variant.compare_at_price | money }}
-              {% endif %}
-            </s>
-          {% endif %}
-        </div>
 
         <button
           type="submit"
