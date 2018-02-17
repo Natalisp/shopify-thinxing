@@ -108,10 +108,22 @@
             </option>
           {% endfor %}
         </select>
-
+<!--
         <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
-        <input type="number" id="Quantity" name="quantity" value="1" min="1">
 
+        <input type="number" id="Quantity" name="quantity" value="1" min="1"> -->
+
+        <input type="hidden" name="quantity" value="1" min="1" max="15">
+
+        <div class="qty-selectors">
+
+            <span class="qty-selectors__btn  qty-selectors__btn--minus">&#150;</span>
+
+            <span>quantity </span><span class="qty-selectors__qty">1</span>
+
+            <span class="qty-selectors__btn  qty-selectors__btn--plus">&#43;</span>
+
+        </div>
 
 
         <button

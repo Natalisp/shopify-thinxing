@@ -19,6 +19,44 @@ window.theme = window.theme || {};
 // =require templates/customers-login.js
 
 $(document).ready(function() {
+
+
+    console.log("qty");
+
+     var $minus = $(".qty-selectors__btn--minus");
+     var $plus  = $(".qty-selectors__btn--plus");
+     var $qtyInput = $("[name='quantity']");
+     var $qtyDisplay = $('.qty-selectors__qty');
+
+     var qty = parseInt( $qtyInput.val() );
+     var MIN = parseInt( $qtyInput.attr("min") );
+     var MAX = parseInt( $qtyInput.attr("max") );
+
+     var updateQty = function(qty){
+         $qtyInput.val(qty).trigger("change");
+         $qtyDisplay.text(qty);
+     };
+
+     $minus.on("click", function(){
+
+         if(qty - 1 >= MIN){
+             qty = qty - 1;
+             updateQty(qty);
+         }
+
+     });
+
+     $plus.on("click", function(){
+
+         if(qty + 1 <= MAX){
+             qty = qty + 1;
+             updateQty(qty);
+         }
+
+     });
+
+
+
   var sections = new slate.Sections();
   sections.register('product', theme.Product);
 

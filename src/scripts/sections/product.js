@@ -71,6 +71,8 @@ theme.Product = (function() {
      * @param {boolean} enabled - Decides whether cart is enabled or disabled
      * @param {string} text - Updates the text notification content of the cart
      */
+
+
     updateAddToCartState: function(evt) {
       var variant = evt.variant;
 
@@ -114,6 +116,7 @@ theme.Product = (function() {
         $compareEls.addClass('hide');
       }
     },
+
 
     /**
      * Updates the DOM with the specified image URL

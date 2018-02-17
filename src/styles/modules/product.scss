@@ -5,3 +5,16 @@
   padding-right: 15px;
   padding-left: 15px;
 }
+
+
+.qty-selectors__qty{
+  &::before{
+    content: '(';
+    display: inline-block;
+  }
+  &::after{
+    content: ')';
+    display: inline-block;
+  }
+
+}
