@@ -146,6 +146,7 @@ theme.Product = (function() {
 if ($(".template-product").length) {
 
 
+// QUANTITY
   var $minus = $(".qty-selectors__btn--minus");
   var $plus  = $(".qty-selectors__btn--plus");
   var $qtyInput = $("[name='quantity']");
@@ -177,5 +178,8 @@ if ($(".template-product").length) {
       }
 
   });
+
+
+
 
 }

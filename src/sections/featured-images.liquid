@@ -1,0 +1,88 @@
+<div class="featured-images__container">
+  <div class="row flex-container">
+
+      {% for block in section.blocks %}
+
+        {% assign b = block.settings %}
+
+        {%- capture image_src -%}
+          {{- b.image | img_url: 'original', format: 'pjpg' -}}
+        {%- endcapture -%}
+
+
+        <div class="col {{b.alignment}} ">
+
+
+          <div class="{{b.ratio}}" >
+            <img src="{{image_src}}" class="" >
+
+          </div>
+
+        </div>
+
+        {% endfor %}
+  </div>
+
+</div>
+
+
+{% schema %}
+{
+    "name":"PDP Images",
+
+    "settings": [
+
+    ],
+    "blocks":[
+        {
+            "name":"Image",
+            "type":"Image",
+            "settings":[
+                {
+                    "id":"image",
+                    "type":"image_picker",
+                    "label":"Featured Image"
+                },
+                {
+                    "type":"select",
+                    "id":"ratio",
+                    "label":"Image Ratio",
+                    "options": [
+                        {
+                            "value": "portrait",
+                            "label": "Portrait"
+                        },
+                        {
+                            "value": "landscape",
+                            "label": "Landscape"
+                        }
+                    ],
+                    "default": "landscape"
+                },
+                {
+                    "type":"select",
+                    "id":"alignment",
+                    "label":"Image Container Width",
+                    "options": [
+                        {
+                            "value": "medium-up--one-half",
+                            "label": "Half page"
+                        },
+                        {
+                            "value": "medium-up--one-whole",
+                            "label": "Center"
+                        }
+                    ],
+                    "default": "medium-up--one-half"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "category":"PDP Images",
+            "name":"PDP Images"
+        }
+    ]
+}
+{% endschema %}
