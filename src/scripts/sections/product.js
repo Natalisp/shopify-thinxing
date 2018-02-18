@@ -180,6 +180,31 @@ if ($(".template-product").length) {
   });
 
 
+  function scrolledCheck() {
 
+    var galleryHeight = $(".product-gallery-container").height();
+    $(".scroll-container").css("height", galleryHeight)
+    // Might have to add loop
+    var fixedContainerWidth = $(".fixed-content").parent().width();
+
+    $(".fixed-content").css("width", fixedContainerWidth);
+
+    if ($(window).scrollTop() >= (galleryHeight - $(window).height()/2) ) {
+        console.log("footer");
+        $(".fixed-content").removeClass("is-scrolling");
+        $(".fixed-content").addClass('is-bottomed');
+    } else {
+      console.log("gallery");
+      $(".fixed-content").removeClass('is-bottomed');
+      $(".fixed-content").addClass("is-scrolling");
+    }
+
+  }
+
+  scrolledCheck();
+
+  $(window).on('scroll', function() {
+    scrolledCheck();
+  });
 
 }

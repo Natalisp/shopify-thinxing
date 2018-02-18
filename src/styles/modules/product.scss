@@ -7,6 +7,10 @@
   background-color: #F8F8F8;
 }
 
+.title{
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
 
 .qty-selectors__qty{
   &::before{
@@ -48,4 +52,14 @@
     position: relative;
     width: 100%
   }
+}
+
+.is-bottomed{
+  position: absolute !important;
+  bottom: 0;
+}
+
+.is-scrolling{
+  position: fixed !important;
+  top: 100px;
 }
