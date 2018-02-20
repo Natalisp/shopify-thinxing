@@ -5,6 +5,9 @@
 
 if ($(".template-product").length) {
 
+  $('.js-slick-slider').slick({
+      arrows: false
+  });
 
 // QUANTITY
 
@@ -80,6 +83,10 @@ if ($(".template-product").length) {
     $this.addClass('selected').siblings().removeClass('selected');
 
  });
+
+
+
+
 
 
 

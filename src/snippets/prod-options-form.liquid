@@ -1,0 +1,108 @@
+<form action="/cart/add" method="post" enctype="multipart/form-data">
+      {% unless product.has_only_default_variant %}
+
+        {% for option in product.options_with_values %}
+
+        {% comment %}
+            Determine if it's a color option.
+        {% endcomment %}
+        {% assign is_color_option = false %}
+        {% assign option_handle = option.name | handle %}
+
+          {%- if option_handle contains "color" -%}
+                {% assign is_color_option = true %}
+          {%- endif -%}
+
+          {% if is_color_option %}
+          <div class="button-group clearfix mb2">
+            <div class="btn label">{{ option.name }}</div>
+            {% for value in option.values %}
+            <div class="btn js-color-option-select color-option-btn {{value | handleize }} {% if value == 'Black' %} selected {% endif %} ">{{ value }}<span class="fa fa-check"></span></div>
+            {% endfor %}
+          </div>
+
+          {% endif %}
+
+        {% endfor %}
+      {% endunless %}
+
+      <select name="id" class="no-js" data-product-select>
+        {% for variant in product.variants %}
+          <option
+            {% if variant == current_variant %}selected="selected"{% endif %}
+            {% unless variant.available %}disabled="disabled"{% endunless %}
+            value="{{ variant.id }}">
+              {{ variant.title }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <input type="hidden" name="quantity" value="1" min="1" max="15">
+
+      <div class="qty-selectors mb2">
+
+          <span class="btn qty-selectors__btn  qty-selectors__btn--minus">&#150;</span>
+
+          <div class="btn">quantity <span class="qty-selectors__qty">1</span></div>
+
+          <span class="btn qty-selectors__btn  qty-selectors__btn--plus">&#43;</span>
+
+      </div>
+
+
+      {% for option in product.options_with_values %}
+
+      {% comment %}
+          Determine if it's a size option.
+      {% endcomment %}
+      {% assign is_size_option = false %}
+      {% assign option_handle = option.name | handle %}
+
+        {%- if option_handle contains "size" -%}
+              {% assign is_size_option = true %}
+        {%- endif -%}
+
+        {% if is_size_option %}
+
+              <div class="selector-wrapper js">
+
+                <select
+                  id="SingleOptionSelector-{{ forloop.index0 }}"
+                  class="btn"
+                  data-single-option-selector
+                  data-index="option{{ option.position }}">
+                  <option value="" disabled selected="selected">size</option>
+                  {% for value in option.values %}
+                    <option
+                      value="{{ value | escape }}"
+                      >
+                        {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <a href="/" class="pdp-info-link mb2">what's my size?</a>
+
+
+        {% endif %}
+
+      {% endfor %}
+
+
+
+      <button
+        type="submit"
+        name="add"
+        class="btn btn--primary mb2"
+        data-add-to-cart
+        {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+          <span data-add-to-cart-text>
+            {% if current_variant.available %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </span>
+      </button>
+    </form>

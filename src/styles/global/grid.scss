@@ -11,6 +11,10 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
+
+  &.flex-space-btw{
+    justify-content: space-between;
+  }
 }
 
 /*============================================================================
@@ -217,6 +221,8 @@
     @include responsive-text-align-helper('#{$breakpoint}--');
   }
 }
+
+
 
 /*================ Build Grid Push Classes ================*/
 @each $breakpoint in $breakpoint-has-push {

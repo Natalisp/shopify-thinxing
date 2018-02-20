@@ -12,8 +12,10 @@
 }
 
 .title{
-  text-transform: uppercase;
   letter-spacing: 3px;
+  @include media-query($medium-up) {
+    text-transform: uppercase;
+  }
 }
 
 .qty-selectors__qty{
@@ -160,11 +162,15 @@ position: absolute;
 }
 
 .is-bottomed{
-  position: absolute !important;
-  bottom: 0;
+  @include media-query($medium-up) {
+    position: absolute !important;
+    bottom: 0;
+  }
 }
 
 .is-scrolling{
-  position: fixed !important;
-  top: 100px;
+    @include media-query($medium-up) {
+      position: fixed !important;
+      top: 100px;
+    }
 }
