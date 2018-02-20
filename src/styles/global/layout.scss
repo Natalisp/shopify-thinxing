@@ -17,6 +17,15 @@ header{
   height: 50px;
 }
 
+nav{
+  @extend .product-container;
+  text-align: right;
+}
+
 .mb2{
   margin-bottom: 2rem;
+}
+
+.mt2{
+  margin-top: 2rem;
 }

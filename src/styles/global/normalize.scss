@@ -120,6 +120,13 @@ pre {
 a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
+  text-decoration: none;
+  color: $color-primary;
+  transition: color 0.1s ease-in;
+
+  &:hover{
+    color: #eb413a;
+  }
 }
 
 /**

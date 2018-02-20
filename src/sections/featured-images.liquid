@@ -10,14 +10,18 @@
         {%- endcapture -%}
 
 
-        <div class="col {{b.alignment}} ">
+        <div class="col medium-up--one-half featured-images__block">
+            <img class="image-placeholder" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="" />
+          <img src="{{image_src}}" alt="" class="image-img">
 
-
-          <div class="{{b.ratio}}" >
-            <img src="{{image_src}}" class="" >
-
+          <div class="details mt2">
+            <div class="details__title">
+              {{b.title}}
+            </div>
+            <div class="details__subtitle">
+              {{b.subtitle}}
+            </div>
           </div>
-
         </div>
 
         {% endfor %}
@@ -44,36 +48,14 @@
                     "label":"Featured Image"
                 },
                 {
-                    "type":"select",
-                    "id":"ratio",
-                    "label":"Image Ratio",
-                    "options": [
-                        {
-                            "value": "portrait",
-                            "label": "Portrait"
-                        },
-                        {
-                            "value": "landscape",
-                            "label": "Landscape"
-                        }
-                    ],
-                    "default": "landscape"
+                    "type":"text",
+                    "id":"title",
+                    "label":"Title"
                 },
                 {
-                    "type":"select",
-                    "id":"alignment",
-                    "label":"Image Container Width",
-                    "options": [
-                        {
-                            "value": "medium-up--one-half",
-                            "label": "Half page"
-                        },
-                        {
-                            "value": "medium-up--one-whole",
-                            "label": "Center"
-                        }
-                    ],
-                    "default": "medium-up--one-half"
+                    "type":"text",
+                    "id":"subtitle",
+                    "label":"Subtitle"
                 }
             ]
         }

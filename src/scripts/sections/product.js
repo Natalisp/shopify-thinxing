@@ -189,7 +189,7 @@ if ($(".template-product").length) {
 
     $(".fixed-content").css("width", fixedContainerWidth);
 
-    if ($(window).scrollTop() >= (galleryHeight - $(window).height()/2) ) {
+    if ($(window).scrollTop() >= (galleryHeight - $(window).height()) ) {
         console.log("footer");
         $(".fixed-content").removeClass("is-scrolling");
         $(".fixed-content").addClass('is-bottomed');

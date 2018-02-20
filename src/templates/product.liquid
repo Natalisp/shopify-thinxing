@@ -10,10 +10,16 @@
   <div class="col medium-up--one-quarter">
     <div class="scroll-container">
       <div class="fixed-content">
-        <div class="rte">
-            <h3 class="title">{{ product.title }}</h3>
-          {{ product.description }}
+        <div class="column-container">
+          <div class="column-contents">
+            <div class="rte">
+                <h3 class="title">{{ product.title }}</h3>
+              {{ product.description }}
+            </div>
+          </div>
+
         </div>
+
       </div>
     </div>
 
@@ -33,6 +39,9 @@
 
     <div class="scroll-container">
       <div class="fixed-content">
+
+        <div class="column-container">
+          <div class="column-contents">
 
     <div data-price-wrapper class="mb2">
       <span data-product-price>
@@ -164,6 +173,9 @@
     </div>
     </div>
 
+    </div>
+    </div>
+
   </div>
 <!-- form container end -->
   </div>
@@ -172,11 +184,8 @@
 
 </div>
 
-
-<div id="bottom-section" style="min-height: 1200px; background-color: #f0dfcf">
   {% section 'featured-images' %}
 
-</div>
 
 
   {% unless product == empty %}
