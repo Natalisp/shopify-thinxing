@@ -46,7 +46,7 @@
 
   <!-- MOBILE GALLERY -->
 
-<div class="small--one-whole  medium-up--hide">
+<div class="small--one-whole  medium-up--hide mb3">
   <div class="js-slick-slider">
 
     {% for image in product.images %}
@@ -59,7 +59,16 @@
 <!-- MOBILE DESCRIPTION  -->
 <div class="small--one-whole  medium-up--hide">
 
+  <div class="dropdown__wrapper mb2">
+    <div class="js-dropdown-toggle  dropdown__trigger prod-description-trigger"></div>
+      <div class="dropdown__content">
+        {{ product.description }}
+      </div>
+  </div>
+
   {% include "prod-options-form" %}
+
+    </div>
 
 </div>
 
@@ -93,7 +102,7 @@
       <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
         {% include "prod-options-form" %}
-        
+
       <a href="/" class="cta-link">build a cycle set and save up to 20%</a>
     </div>
     </div>

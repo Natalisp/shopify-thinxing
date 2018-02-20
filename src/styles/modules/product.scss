@@ -4,7 +4,9 @@
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
-
+  @include media-query($small) {
+    max-width: 350px;
+  }
 }
 
 .product-gallery-container{
@@ -173,4 +175,32 @@ position: absolute;
       position: fixed !important;
       top: 100px;
     }
+}
+
+.dropdown__wrapper{
+  .dropdown__trigger{
+    cursor: pointer;
+    text-align: center;
+  }
+
+
+  &.open{
+    .dropdown__content{
+      max-height: 1000px;
+    }
+    .prod-description-trigger::after{
+      content: 'Hide description';
+    }
+  }
+}
+
+
+.prod-description-trigger::after{
+  content: 'Show description';
+  display: inline-block;
+}
+
+.dropdown__content{
+  overflow: hidden;
+  max-height: 0;
 }

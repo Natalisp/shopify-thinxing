@@ -6,7 +6,8 @@
 if ($(".template-product").length) {
 
   $('.js-slick-slider').slick({
-      arrows: false
+      arrows: false,
+      dots: true
   });
 
 // QUANTITY
@@ -48,20 +49,23 @@ if ($(".template-product").length) {
 
   function scrolledCheck() {
 
-    var galleryHeight = $(".product-gallery-container").height();
-    $(".scroll-container").css("height", galleryHeight)
-    // Might have to add loop
-    var fixedContainerWidth = $(".fixed-content").parent().width();
+      if (Modernizr.mq('(min-width: 749px)')) {
 
-    $(".fixed-content").css("width", fixedContainerWidth);
+        var galleryHeight = $(".product-gallery-container").height();
+        $(".scroll-container").css("height", galleryHeight)
+        // Might have to add loop
+        var fixedContainerWidth = $(".fixed-content").parent().width();
 
-    if ($(window).scrollTop() >= (galleryHeight - $(window).height()) ) {
-        $(".fixed-content").removeClass("is-scrolling");
-        $(".fixed-content").addClass('is-bottomed');
-    } else {
-      $(".fixed-content").removeClass('is-bottomed');
-      $(".fixed-content").addClass("is-scrolling");
-    }
+        $(".fixed-content").css("width", fixedContainerWidth);
+
+        if ($(window).scrollTop() >= (galleryHeight - $(window).height()) ) {
+            $(".fixed-content").removeClass("is-scrolling");
+            $(".fixed-content").addClass('is-bottomed');
+        } else {
+          $(".fixed-content").removeClass('is-bottomed');
+          $(".fixed-content").addClass("is-scrolling");
+        }
+      }
 
   }
 
@@ -85,7 +89,15 @@ if ($(".template-product").length) {
  });
 
 
+// DROPDOWN
 
+$(document).on('click', '.js-dropdown-toggle', function() {
+    var $dropdown = $(this).parent();
+
+    $dropdown.toggleClass('open')
+            .siblings().removeClass('open');
+
+});
 
 
 
