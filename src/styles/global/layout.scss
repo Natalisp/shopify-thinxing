@@ -2,6 +2,7 @@
 body,
 html {
   background-color: $color-body;
+  overflow-x: hidden;
 }
 
 .page-width {
@@ -19,7 +20,11 @@ header{
 
 nav{
   @extend .product-container;
-  text-align: right;
+  text-align: center;
+}
+
+ul.site-nav{
+  padding: 0;
 }
 
 .mb2{

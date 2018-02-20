@@ -7,6 +7,10 @@
 
 }
 
+.product-gallery-container{
+  text-align: center;
+}
+
 .title{
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -22,6 +26,17 @@
     display: inline-block;
   }
 
+}
+
+.pdp-info-link{
+  font-size: 12px;
+  line-height: 2;
+  text-decoration: underline;
+  display: block;
+}
+
+.cta-link{
+  text-decoration: underline;
 }
 
 #shopify-section-featured-images{
@@ -92,8 +107,33 @@ position: absolute;
 }
 
 .details__subtitle{
-  font-size: 0.875em;
+  font-size: 12px;
   line-height: 2;
+}
+
+
+// Color Buttons
+
+.color-option-btn{
+  span{
+    font-size: 12px;
+    padding-left: 3px;
+    opacity: 0;
+  }
+  &.black{
+    background-color: #000;
+    color: #fff;
+  }
+
+  &.beige{
+    background-color: #fedbb5;
+  }
+
+  &.selected{
+    span{
+      opacity: 1;
+    }
+  }
 }
 
 

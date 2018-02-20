@@ -1,3 +1,89 @@
+/* =========================================================================
+    Custom PDP script
+========================================================================= */
+
+
+if ($(".template-product").length) {
+
+
+// QUANTITY
+
+  var $minus = $(".qty-selectors__btn--minus");
+  var $plus  = $(".qty-selectors__btn--plus");
+  var $qtyInput = $("[name='quantity']");
+  var $qtyDisplay = $('.qty-selectors__qty');
+
+  var qty = parseInt( $qtyInput.val() );
+  var MIN = parseInt( $qtyInput.attr("min") );
+  var MAX = parseInt( $qtyInput.attr("max") );
+
+  var updateQty = function(qty){
+      $qtyInput.val(qty).trigger("change");
+      $qtyDisplay.text(qty);
+  };
+
+  $minus.on("click", function(){
+
+      if(qty - 1 >= MIN){
+          qty = qty - 1;
+          updateQty(qty);
+      }
+
+  });
+
+  $plus.on("click", function(){
+
+      if(qty + 1 <= MAX){
+          qty = qty + 1;
+          updateQty(qty);
+      }
+
+  });
+
+
+// Scroll Check
+
+  function scrolledCheck() {
+
+    var galleryHeight = $(".product-gallery-container").height();
+    $(".scroll-container").css("height", galleryHeight)
+    // Might have to add loop
+    var fixedContainerWidth = $(".fixed-content").parent().width();
+
+    $(".fixed-content").css("width", fixedContainerWidth);
+
+    if ($(window).scrollTop() >= (galleryHeight - $(window).height()) ) {
+        $(".fixed-content").removeClass("is-scrolling");
+        $(".fixed-content").addClass('is-bottomed');
+    } else {
+      $(".fixed-content").removeClass('is-bottomed');
+      $(".fixed-content").addClass("is-scrolling");
+    }
+
+  }
+
+  scrolledCheck();
+
+  $(window).on('scroll', function() {
+    scrolledCheck();
+  });
+
+}
+
+
+// Color Select btns
+
+ $(document).on('click', '.js-color-option-select', function() {
+
+    var $this = $(this);
+
+    $this.addClass('selected').siblings().removeClass('selected');
+
+ });
+
+
+
+
 /**
  * Product Template Script
  * ------------------------------------------------------------------------------
@@ -140,71 +226,3 @@ theme.Product = (function() {
 
   return Product;
 })();
-
-
-
-if ($(".template-product").length) {
-
-
-// QUANTITY
-  var $minus = $(".qty-selectors__btn--minus");
-  var $plus  = $(".qty-selectors__btn--plus");
-  var $qtyInput = $("[name='quantity']");
-  var $qtyDisplay = $('.qty-selectors__qty');
-
-  var qty = parseInt( $qtyInput.val() );
-  var MIN = parseInt( $qtyInput.attr("min") );
-  var MAX = parseInt( $qtyInput.attr("max") );
-
-  var updateQty = function(qty){
-      $qtyInput.val(qty).trigger("change");
-      $qtyDisplay.text(qty);
-  };
-
-  $minus.on("click", function(){
-
-      if(qty - 1 >= MIN){
-          qty = qty - 1;
-          updateQty(qty);
-      }
-
-  });
-
-  $plus.on("click", function(){
-
-      if(qty + 1 <= MAX){
-          qty = qty + 1;
-          updateQty(qty);
-      }
-
-  });
-
-
-  function scrolledCheck() {
-
-    var galleryHeight = $(".product-gallery-container").height();
-    $(".scroll-container").css("height", galleryHeight)
-    // Might have to add loop
-    var fixedContainerWidth = $(".fixed-content").parent().width();
-
-    $(".fixed-content").css("width", fixedContainerWidth);
-
-    if ($(window).scrollTop() >= (galleryHeight - $(window).height()) ) {
-        console.log("footer");
-        $(".fixed-content").removeClass("is-scrolling");
-        $(".fixed-content").addClass('is-bottomed');
-    } else {
-      console.log("gallery");
-      $(".fixed-content").removeClass('is-bottomed');
-      $(".fixed-content").addClass("is-scrolling");
-    }
-
-  }
-
-  scrolledCheck();
-
-  $(window).on('scroll', function() {
-    scrolledCheck();
-  });
-
-}

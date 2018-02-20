@@ -13,7 +13,7 @@
   background-color: transparent;
   overflow: hidden;
   text-transform: lowercase;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 }
 
 .btn--primary{
@@ -38,12 +38,18 @@
 
   .btn{
     flex: 1;
-    border: 2px solid $color-border;
+    border-color: $color-border;
     border-right: 0;
     &:last-child{
       border-right: 2px solid $color-border;
     }
+
+    &.label{
+        cursor: default;
+      }
   }
+
+
 }
 
 

@@ -7,7 +7,7 @@
 
 
 <div class="row">
-  <div class="col medium-up--one-quarter">
+  <div class="col medium-up--one-quarter one-whole">
     <div class="scroll-container">
       <div class="fixed-content">
         <div class="column-container">
@@ -24,7 +24,7 @@
     </div>
 
   </div>
-  <div class="col medium-up--one-half">
+  <div class="col medium-up--one-half one-whole">
     {% if product.images.size > 1 %}
     <div class="product-gallery-container">
       {% for image in product.images %}
@@ -35,7 +35,7 @@
     </div>
     {% endif %}
   </div>
-  <div class="col medium-up--one-quarter">
+  <div class="col medium-up--one-quarter one-whole">
 
     <div class="scroll-container">
       <div class="fixed-content">
@@ -80,9 +80,9 @@
 
             {% if is_color_option %}
             <div class="button-group clearfix mb2">
-              <span class="btn">{{ option.name }}</span>
+              <div class="btn label">{{ option.name }}</div>
               {% for value in option.values %}
-              <span class="btn {% if option.selected_value == value %}selected{% endif %}">{{ value }}</span>
+              <div class="btn js-color-option-select color-option-btn {{value | handleize }} {% if value == 'Black' %} selected {% endif %} ">{{ value }}<span class="fa fa-check"></span></div>
               {% endfor %}
             </div>
 
@@ -129,7 +129,7 @@
 
           {% if is_size_option %}
 
-                <div class="selector-wrapper js mb2">
+                <div class="selector-wrapper js">
 
                   <select
                     id="SingleOptionSelector-{{ forloop.index0 }}"
@@ -147,6 +147,8 @@
                   </select>
                 </div>
 
+                <a href="/" class="pdp-info-link mb2">what's my size?</a>
+
 
           {% endif %}
 
@@ -157,7 +159,7 @@
         <button
           type="submit"
           name="add"
-          class="btn btn--primary"
+          class="btn btn--primary mb2"
           data-add-to-cart
           {% unless current_variant.available %}disabled="disabled"{% endunless %}>
             <span data-add-to-cart-text>
@@ -169,7 +171,7 @@
             </span>
         </button>
       </form>
-
+      <a href="/" class="cta-link">build a cycle set and save up to 20%</a>
     </div>
     </div>
 
