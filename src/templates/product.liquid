@@ -5,7 +5,6 @@
 
 <div class="product-container">
 
-
 <div class="row">
   <div class="col medium-up--one-quarter small--hide">
     <div class="scroll-container">
@@ -31,21 +30,21 @@
         </span></h1>
   </div>
 
-  <!-- DESKTOP GALLERY -->
-  <div class="col medium-up--one-half  small--hide">
-    {% if product.images.size > 1 %}
-    <div class="product-gallery-container">
-      {% for image in product.images %}
+<!-- DESKTOP GALLERY -->
+<div class="col medium-up--one-half  small--hide">
+  {% if product.images.size > 1 %}
+  <div class="product-gallery-container">
+    {% for image in product.images %}
 
-            <img src="{{ image.src | img_url: '600x' }}" alt="{{ image.alt | escape }}" data-pdp-image-zoom="pdp-image-{{forloop.index}}" class="js-body-toggle-class js-zoom-img" data-body-class="product__zoom-gallery--toggled">
+          <img src="{{ image.src | img_url: '600x' }}" alt="{{ image.alt | escape }}" data-pdp-image-zoom="pdp-image-{{forloop.index}}" class="js-body-toggle-class js-zoom-img" data-body-class="product__zoom-gallery--toggled">
 
-      {% endfor %}
-    </div>
-    {% endif %}
+    {% endfor %}
   </div>
+  {% endif %}
+</div>
 
 
-  <!-- MOBILE GALLERY -->
+<!-- MOBILE GALLERY -->
 <div class="small--one-whole  medium-up--hide mb3">
   <div class="js-slick-slider">
 
@@ -79,59 +78,58 @@
         <div class="column-container">
           <div class="column-contents">
 
-    <div data-price-wrapper class="mb2">
-      <span data-product-price>
-        {{ current_variant.price | money }}
-      </span>
+            <div data-price-wrapper class="mb2">
+              <span data-product-price>
+                {{ current_variant.price | money }}
+              </span>
 
-      {% if product.compare_at_price_max > product.price %}
-        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-        <s data-compare-price>
-          {% if current_variant.compare_at_price > current_variant.price %}
-            {{ current_variant.compare_at_price | money }}
-          {% endif %}
-        </s>
-      {% endif %}
+              {% if product.compare_at_price_max > product.price %}
+                <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                <s data-compare-price>
+                  {% if current_variant.compare_at_price > current_variant.price %}
+                    {{ current_variant.compare_at_price | money }}
+                  {% endif %}
+                </s>
+              {% endif %}
+            </div>
+
+            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+              <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+              <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+                {% include "prod-options-form" %}
+
+              <a href="/" class="cta-link">build a cycle set and save up to 20%</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-
-    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-      <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-      <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
-      <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
-
-        {% include "prod-options-form" %}
-
-      <a href="/" class="cta-link">build a cycle set and save up to 20%</a>
-    </div>
-    </div>
-
-    </div>
-    </div>
-
+  <!-- form container end -->
   </div>
-<!-- form container end -->
+
+</div>
+
+
+</div>
+
+</div>
+
+
+  <!-- ZOOM GALLERY -->
+  <div class="product__zoom-gallery js-body-toggle-class" data-body-class="product__zoom-gallery--toggled">
+    {% for image in product.images %}
+
+          <img src="{{ image.src | img_url: 'original' }}" alt="{{ image.alt | escape }}" id="pdp-image-{{forloop.index}}" data-image-zoom="zoom-image-{{forloop.index}}">
+
+    {% endfor %}
   </div>
-
-</div>
-
-
-
-
-</div>
-
-</div>
-
-    <div class="product__zoom-gallery js-body-toggle-class" data-body-class="product__zoom-gallery--toggled">
-      {% for image in product.images %}
-
-            <img src="{{ image.src | img_url: 'original' }}" alt="{{ image.alt | escape }}" id="pdp-image-{{forloop.index}}" data-image-zoom="zoom-image-{{forloop.index}}">
-
-      {% endfor %}
-    </div>
 
 
   {% section 'featured-images' %}
-
 
 
   {% unless product == empty %}

@@ -14,8 +14,7 @@ window.theme = window.theme || {};
 
 
 /*================ Templates ================*/
-// =require templates/customers-addresses.js
-// =require templates/customers-login.js
+
 // =require templates/product.js
 
 $(document).ready(function() {
