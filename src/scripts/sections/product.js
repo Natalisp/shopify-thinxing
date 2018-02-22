@@ -101,6 +101,30 @@ $(document).on('click', '.js-dropdown-toggle', function() {
 
 
 
+// ZOOM
+
+// Helper function to toggle class in body
+
+$(document).on('click', '.js-body-toggle-class', function() {
+    $('body').toggleClass($(this).data('body-class'));
+});
+
+
+$(document).on('click', '.js-zoom-img', function() {
+  var imageClicked = $(this).data("pdp-image-zoom");
+  var imageToZoom = $('.product__zoom-gallery--toggled').find('#' + imageClicked);
+  var scrollToElement = imageToZoom.offset().top;
+  console.log(scrollToElement);
+
+  var $container = $('.product__zoom-gallery'),
+      $scrollTo = $(imageToZoom);
+
+  $container.scrollTop(
+      $scrollTo.offset().top - $container.offset().top + $container.scrollTop()
+  );
+
+})
+
 
 
 /**

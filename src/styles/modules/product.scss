@@ -204,3 +204,35 @@ position: absolute;
   overflow: hidden;
   max-height: 0;
 }
+
+
+
+.product__zoom-gallery{
+  position: fixed;
+  overflow-y: scroll;
+  text-align: center;
+  top:    0;
+  left:   0;
+  height: 100%;
+  width:  100%;
+  z-index: 10;
+  background-color: #fff;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+
+  img{
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.product__zoom-gallery--toggled{
+  .product__zoom-gallery{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+
+  }
+}
