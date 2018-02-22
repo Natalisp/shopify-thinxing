@@ -69,6 +69,13 @@
   align-items: center;
   border: 2px solid $color-border;
 
+  span{
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    height: 100%;
+  }
+
   .qty-selectors__btn--minus{
     position: absolute;
     left: 0;

@@ -1,5 +1,5 @@
 {% comment %}
-  When a comment is submitted, the browser is redirected to a page that includes 
+  When a comment is submitted, the browser is redirected to a page that includes
   the new comment id in its URL.
   #comments is a required ID and is used as an anchor link by Shopify.
 {% endcomment %}
@@ -37,10 +37,6 @@
         </li>
       {% endfor %}
     </ul>
-  {% endif %}
-
-  {% if settings.social_sharing_blog %}
-    {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
   {% endif %}
 
   {% if blog.comments_enabled? %}

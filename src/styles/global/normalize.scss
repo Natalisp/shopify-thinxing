@@ -57,10 +57,9 @@ section {
  */
 
 h1 {
-  font-size: 1.5em;
+  font-size: 0.875em;
   margin: 0 0 0.67em 0;
   font-weight: normal;
-
 }
 
 p{
@@ -305,7 +304,7 @@ button,
 html [type="button"], /* 1 */
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button; /* 2 */
+  -webkit-appearance: none; /* 2 */
 }
 
 /**

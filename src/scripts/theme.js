@@ -11,12 +11,12 @@ window.theme = window.theme || {};
 // =require slate/images.js
 // =require slate/variants.js
 
-/*================ Sections ================*/
-// =require sections/product.js
+
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
 // =require templates/customers-login.js
+// =require templates/product.js
 
 $(document).ready(function() {
 

@@ -155,7 +155,7 @@ position: absolute;
 }
 
 .column-container{
-  min-height: 90vh;
+  min-height: 100vh;
   position: relative;
 }
 
@@ -164,12 +164,14 @@ position: absolute;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  min-height: 320px;
 }
 
 .is-bottomed{
   @include media-query($medium-up) {
     position: absolute !important;
     bottom: 0;
+    top: auto;
   }
 }
 
@@ -177,6 +179,7 @@ position: absolute;
     @include media-query($medium-up) {
       position: fixed !important;
       top: 100px;
+      bottom: auto;
     }
 }
 
@@ -201,6 +204,7 @@ position: absolute;
 .prod-description-trigger::after{
   content: 'Show description';
   display: inline-block;
+  text-decoration: underline;
 }
 
 .dropdown__content{

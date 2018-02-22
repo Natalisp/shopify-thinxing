@@ -14,7 +14,7 @@
           {%- endif -%}
 
           {% if is_color_option %}
-          <div class="button-group clearfix mb2">
+          <div class="button-group clearfix mb1">
             <div class="btn label">{{ option.name }}</div>
             {% for value in option.values %}
             <div class="btn js-color-option-select color-option-btn {{value | handleize }} {% if value == 'Black' %} selected {% endif %} ">{{ value }}<span class="fa fa-check"></span></div>
@@ -39,7 +39,7 @@
 
       <input type="hidden" name="quantity" value="1" min="1" max="15">
 
-      <div class="qty-selectors mb2">
+      <div class="qty-selectors mb1">
 
           <span class="btn qty-selectors__btn  qty-selectors__btn--minus">&#150;</span>
 
@@ -82,7 +82,7 @@
                 </select>
               </div>
 
-              <a href="/" class="pdp-info-link mb2">what's my size?</a>
+              <a href="/" class="pdp-info-link mb1">what's my size?</a>
 
 
         {% endif %}
@@ -94,7 +94,7 @@
       <button
         type="submit"
         name="add"
-        class="btn btn--primary mb2"
+        class="btn btn--primary mb1"
         data-add-to-cart
         disabled="disabled">
           <span data-add-to-cart-text>
