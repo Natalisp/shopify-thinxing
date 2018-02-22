@@ -58,7 +58,7 @@ if ($(".template-product").length) {
 
         $(".fixed-content").css("width", fixedContainerWidth);
 
-        if ($(window).scrollTop() >= (galleryHeight - $(window).height()) ) {
+        if ($(window).scrollTop() > (galleryHeight - $(window).height() ) ) {
             $(".fixed-content").removeClass("is-scrolling");
             $(".fixed-content").addClass('is-bottomed');
         } else {
@@ -74,6 +74,11 @@ if ($(".template-product").length) {
   $(window).on('scroll', function() {
     scrolledCheck();
   });
+
+  $('input[type="submit"]').on('click', function(e){
+    e.preventDefault();
+    console.log('submit');
+  })
 
 }
 

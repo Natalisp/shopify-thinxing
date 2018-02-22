@@ -21,6 +21,9 @@
   color: $color-body;
   border-color: $color-border;
   width: 100%;
+  &.psw{
+    width: auto;
+  }
   &:hover{
     background-color: $color-body;
     color: $color-border;

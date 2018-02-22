@@ -34,7 +34,7 @@
 
 .pdp-info-link{
   font-size: 12px;
-  line-height: 2;
+  line-height: 3;
   text-decoration: underline;
   display: block;
 }
@@ -45,11 +45,14 @@
 
 #shopify-section-featured-images{
   background-color: #fff;
+  padding-bottom: 5rem;
 }
 
 .featured-images__container{
   max-width: 1000px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
   text-align: center;
 }
 

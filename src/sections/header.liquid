@@ -2,11 +2,13 @@
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
   <header role="banner">
 
+    {% if template.name == 'index' %}
       <h1 itemscope itemtype="http://schema.org/Organization">
         <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
             {{ shop.name }}
         </a>
       </h1>
+      {% endif %}
 
 
   </header>
@@ -16,8 +18,6 @@
       {% assign prod = all_products['hi-waist'] %}
           {% if template.name == 'index' %}
             <a href="{{prod.url}}">VIEW PRODUCT</a>
-            {% else %}
-            <a href="/">HOME</a>
           {% endif %}
     </ul>
   </nav>
