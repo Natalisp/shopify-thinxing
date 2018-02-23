@@ -149,7 +149,17 @@ position: absolute;
   position: relative;
   .fixed-content{
     position: relative;
-    width: 100%
+    width: 100%;
+    &.is-bottomed{
+        position: absolute;
+        bottom: 0;
+        top: auto;
+    }
+
+    &.is-scrolling{
+          position: fixed;
+          bottom: auto;
+    }
   }
 }
 
@@ -164,22 +174,6 @@ position: absolute;
   top: 50%;
   transform: translateY(-50%);
   min-height: 320px;
-}
-
-.is-bottomed{
-  @include media-query($medium-up) {
-    position: absolute !important;
-    bottom: 0;
-    top: auto;
-  }
-}
-
-.is-scrolling{
-    @include media-query($medium-up) {
-      position: fixed !important;
-      top: 100px;
-      bottom: auto;
-    }
 }
 
 .dropdown__wrapper{

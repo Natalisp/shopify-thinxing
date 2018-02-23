@@ -50,28 +50,29 @@ if ($(".template-product").length) {
 
   function scrolledCheck() {
 
-    // run this only on desktops
-      if (Modernizr.mq('(min-width: 749px)')) {
-
         var galleryHeight = $(".product-gallery-container").height();
         $(".scroll-container").css("height", galleryHeight);
 
         var fixedContainerWidth = $(".fixed-content").parent().width();
-
         $(".fixed-content").css("width", fixedContainerWidth);
 
-        if ($(window).scrollTop() > (galleryHeight - $(window).height() ) ) {
-            $(".fixed-content").removeClass("is-scrolling");
-            $(".fixed-content").addClass('is-bottomed');
-        } else {
-          $(".fixed-content").removeClass('is-bottomed');
+        if ($(window).scrollTop() <= (galleryHeight - $(window).height() ) ) {
+          console.log($(window).scrollTop(), (galleryHeight - $(window).height() ));
           $(".fixed-content").addClass("is-scrolling");
+          $(".fixed-content").removeClass('is-bottomed');
+        } else {
+          console.log($(window).scrollTop(), (galleryHeight - $(window).height() ));
+
+          $(".fixed-content").removeClass("is-scrolling");
+          $(".fixed-content").addClass('is-bottomed');
         }
-      }
 
   }
 
-  scrolledCheck();
+  $(window).load(function() {
+      scrolledCheck();
+  });
+
 
   $(window).on('scroll', function() {
     scrolledCheck();

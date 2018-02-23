@@ -25,6 +25,10 @@ textarea {
   min-height: 100px;
 }
 
+input#Password{
+  vertical-align: bottom;
+}
+
 /*================ Custom select style ================*/
 select {
   @include prefix(appearance, none, webkit moz spec);
